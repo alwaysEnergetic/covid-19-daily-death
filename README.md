@@ -1,6 +1,6 @@
 # COVID-19 Tracker in United States
 
-Live Site (deployed on Heroku): 
+Live Site (deployed on Heroku): https://covid19-us-tracker-visual.herokuapp.com/
 
 ## Screenshot (As of )
 
