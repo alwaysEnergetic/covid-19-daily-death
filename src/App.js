@@ -41,10 +41,10 @@ function App() {
   return (
     <div className="App">
       <h1>COVID-19 US Tracker</h1>
-      <h2>Last Updated: {new Date(data.dateChecked).toString()}</h2>
-      <h2>Number of People Infected: {data.positive}</h2>
-      <h2>Number of People Recovered: {data.recovered}</h2>
-      <h2>Total Deaths: {data.death}</h2>
+      <h2>Last Updated: {new Date(data.dateChecked).toDateString()}</h2>
+      <h2>Number of People Infected: {Number(data.positive).toLocaleString('en')}</h2>
+      <h2>Number of People Recovered: {Number(data.recovered).toLocaleString('en')}</h2>
+      <h2>Total Deaths: {Number(data.death).toLocaleString('en')}</h2>
     </div>
   );
 }
