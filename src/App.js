@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import coronavirusLogo from './images/covid19-logo.jpg';
 import axios from 'axios';
-import { DataCards } from "./components"
+import { DataCards, Chart } from "./components"
 
 function App() {
   const [data, setData] = useState({});
@@ -44,6 +44,8 @@ function App() {
       <img src={coronavirusLogo} alt="COVID-19 LOGO"/>
       <h1>COVID-19 US Tracker</h1>
       <DataCards data={data}/>
+      <Chart data={data} />
+      <h2>Last Updated: {new Date(data.dateChecked).toDateString()}</h2>
     </div>
   );
 }
