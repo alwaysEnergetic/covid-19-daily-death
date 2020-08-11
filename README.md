@@ -41,6 +41,11 @@ By default, npm start will tell you to navigate to localhost:3000 (or another lo
     * View the Github repo for react-chartjs-2 [here](https://github.com/jerairrest/react-chartjs-2) and the Chart.js library documentation [here](https://www.chartjs.org/docs/latest/).  
 * This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Color Palette 
+The color palette I chose for this project is called Popsicle from [this](https://digitalsynopsis.com/design/color-schemes-palettes-combinations/) post I found. It is number 37 on the list. This choice was inspired from the bold and vibrant red of the logo that I first found. Because of the logo, I knew I wanted to look for a similar vibrant red to reflect on the data of death cases to represent danger. I wanted to associate the data of recovered cases with a feeling of peace and safety, so I opted for a turquoise blue color as well. Finally I opted for a light green color to associate the number of positive cases with because I thought it reflects sickness and germs.
+
+![Color Palette Image](./src/images/covid19-color-palette.png)
+
 ## Logo Credits
 The coronavirus logo was taken from [York Graphic Designers](https://www.yorkgraphicdesigners.co.uk/coronavirus-covid-19-logo-design/). Check them out!
 

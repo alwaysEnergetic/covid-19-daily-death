@@ -1,0 +1,27 @@
+/*
+    Color Palette: 
+    Red: F3533A -> rgb(243, 83, 58)
+    Orange: FA9F42 -> rgb(250, 159, 66)
+    Green: 8AD879 -> rgb(138, 216, 121)
+    Blue: 5ACFC9 -> rgb(90, 207, 201)
+*/
+
+.cardGradient {
+    background: linear-gradient(45deg, #348f50 0%, #56b4d3 100%) !important;
+    color: rgb(250, 250, 250) !important;
+}
+
+.infected {
+    background: rgb(206, 255, 195) !important;
+    border-bottom: 10px solid rgba(138, 216, 121, 0.9);
+}
+
+.recovered {
+    background: rgb(174, 245, 241) !important;
+    border-bottom: 10px solid rgba(90, 207, 201, 0.9);
+}
+
+.deaths {
+    background: rgb(252, 168, 155) !important;    
+    border-bottom: 10px solid rgba(243, 83, 58, 0.9);
+}

@@ -14,7 +14,7 @@ function Chart({data: {positive, recovered, death} }) {
                 datasets: [
                     {
                         data: [positive, recovered, death],
-                        backgroundColor: ["rgba(238,210,2, 0.75)", "rgba(0, 0, 255, 0.5)", "rgba(255, 0, 0, 0.5)"]
+                        backgroundColor: ["rgba(138, 216, 121, 0.9)", "rgba(90, 207, 201, 0.9)", "rgba(243, 83, 58, 0.9)"]
                     }
                 ]
             }}
