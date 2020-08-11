@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import coronavirusLogo from './images/covid19-logo.jpg';
 import axios from 'axios';
+import { DataCards } from "./components"
 
 function App() {
-  const [data, setData] = useState({})
+  const [data, setData] = useState({});
   
   const API_US = 'https://covidtracking.com/api/us';
 
@@ -37,14 +39,11 @@ function App() {
     }
   }, [data])
 
-  // display data to make sure state is set properly
   return (
     <div className="App">
+      <img src={coronavirusLogo} alt="COVID-19 LOGO"/>
       <h1>COVID-19 US Tracker</h1>
-      <h2>Last Updated: {new Date(data.dateChecked).toDateString()}</h2>
-      <h2>Number of People Infected: {Number(data.positive).toLocaleString('en')}</h2>
-      <h2>Number of People Recovered: {Number(data.recovered).toLocaleString('en')}</h2>
-      <h2>Total Deaths: {Number(data.death).toLocaleString('en')}</h2>
+      <DataCards data={data}/>
     </div>
   );
 }

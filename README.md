@@ -33,8 +33,16 @@ npm start
 By default, npm start will tell you to navigate to localhost:3000 (or another local server if port 3000 is occupied) on your browser to see the application
 
 ## Utilized
+* @material-ui/core - React UI framework
+    * View the official website [here](https://material-ui.com/)
+* react-countup - React wrapper for CountUp.js
+    * View the package [here](https://www.npmjs.com/package/react-countup)
+* react-chartjs-2 - React wrapper for Chart.js
+    * View the Github repo for react-chartjs-2 [here](https://github.com/jerairrest/react-chartjs-2) and the Chart.js library documentation [here](https://www.chartjs.org/docs/latest/).  
+* This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Logo Credits
+The coronavirus logo was taken from [York Graphic Designers](https://www.yorkgraphicdesigners.co.uk/coronavirus-covid-19-logo-design/). Check them out!
 
 ## Author
 Kenneth Nguyen
