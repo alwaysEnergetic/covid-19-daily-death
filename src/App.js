@@ -43,9 +43,7 @@ function App() {
     <div className={styles.app}>
       <img src={coronavirusLogo} alt="COVID-19 LOGO" className={styles.image}/>
       <h1>COVID-19 US Tracker</h1>
-      <br />
       <DataCards data={data}/>
-      <br />
       <Chart data={data} />
       <p>Data Last Updated: {new Date(data.dateChecked).toDateString()}</p>
     </div>

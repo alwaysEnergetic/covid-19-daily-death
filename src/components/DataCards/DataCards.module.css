@@ -5,14 +5,17 @@
     Green: 8AD879 -> rgb(138, 216, 121)
     Blue: 5ACFC9 -> rgb(90, 207, 201)
 */
-
-.cardGradient {
+/* .cardGradient {
     background: linear-gradient(45deg, #348f50 0%, #56b4d3 100%) !important;
     color: rgb(250, 250, 250) !important;
+} */
+
+.container {
+    margin: 2% 0;
 }
 
 .card {
-    margin: 0 2% !important;
+    margin: 0 3% !important;
 }
 
 .infected {

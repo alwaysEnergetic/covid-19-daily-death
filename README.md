@@ -2,15 +2,16 @@
 
 Live Site (deployed on Heroku): https://covid19-us-tracker-visual.herokuapp.com/
 
-## Screenshot (As of )
-
-## Demo GIF
+## Screenshot (As of August 11th, 2020)
+![COVID19 App Screenshot](./src/images/exampleCOVID19.png)
 
 ## Description
-A COVID-19 tracker that visualizes the statistics of COVID-19 data provided by the [COVID Tracking Project API](https://covidtracking.com/data/api).
+A COVID-19 tracker that visualizes the statistics (total positive cases, recoveries, and deaths) of COVID-19 data in the United States provided by the [COVID Tracking Project API](https://covidtracking.com/data/api).
 
 ## COVID Tracking Project API
-The documentation of the API used is linked [here](https://documenter.getpostman.com/view/8854915/SzS8rjHv?version=latest#dc323eaa-826d-4efc-bd3c-85d9d757477b).  
+The documentation of the API used is linked [here](https://documenter.getpostman.com/view/8854915/SzS8rjHv?version=latest#dc323eaa-826d-4efc-bd3c-85d9d757477b). 
+
+I make a GET request to 'http://covidtracking.com/api/us' to obtain the US Current information that I display on my web app. 
 
 ## Running Project Locally
 There is the live site of this application deployed on Heroku as displayed on one of the first few lines of this README, but if you would rather run this application locally, then do the following:
@@ -48,6 +49,12 @@ The color palette I chose for this project is called Popsicle from [this](https:
 
 ## Logo Credits
 The coronavirus logo was taken from [York Graphic Designers](https://www.yorkgraphicdesigners.co.uk/coronavirus-covid-19-logo-design/). Check them out!
+
+## Backlog
+* Options to view data of each individual state/territory
+* Line graph of daily COVID-19 statistics
+* % change counter for each data
+* UI adjustments
 
 ## Author
 Kenneth Nguyen

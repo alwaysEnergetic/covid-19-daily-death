@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Grid,  Card, CardContent, Typography} from '@material-ui/core';
+import { Grid, Card, CardContent, Typography} from '@material-ui/core';
 import CountUp from 'react-countup';
 import styles from "./DataCards.module.css";
 import cx from "classnames";
@@ -12,7 +12,7 @@ function DataCards({data: {positive, recovered, death} }) {
     }  
 
     return (
-        <div>
+        <div className={styles.container}>
             <Grid container direction="row" justify="center" alignItems="stretch" spacing={3}>
                 <Grid item component={Card} xs={12} sm className={cx(styles.card, styles.infected)}>
                     <CardContent>
