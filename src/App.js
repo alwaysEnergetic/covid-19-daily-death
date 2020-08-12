@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import styles from './App.module.css';
 import coronavirusLogo from './images/covid19-logo.jpg';
 import axios from 'axios';
 import { DataCards, Chart } from "./components"
@@ -40,12 +40,14 @@ function App() {
   }, [data])
 
   return (
-    <div className="App">
-      <img src={coronavirusLogo} alt="COVID-19 LOGO"/>
+    <div className={styles.app}>
+      <img src={coronavirusLogo} alt="COVID-19 LOGO" className={styles.image}/>
       <h1>COVID-19 US Tracker</h1>
+      <br />
       <DataCards data={data}/>
+      <br />
       <Chart data={data} />
-      <h2>Last Updated: {new Date(data.dateChecked).toDateString()}</h2>
+      <p>Data Last Updated: {new Date(data.dateChecked).toDateString()}</p>
     </div>
   );
 }

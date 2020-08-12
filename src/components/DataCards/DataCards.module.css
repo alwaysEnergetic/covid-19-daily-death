@@ -11,6 +11,10 @@
     color: rgb(250, 250, 250) !important;
 }
 
+.card {
+    margin: 0 2% !important;
+}
+
 .infected {
     background: rgb(206, 255, 195) !important;
     border-bottom: 10px solid rgba(138, 216, 121, 0.9);
@@ -22,6 +26,12 @@
 }
 
 .deaths {
-    background: rgb(252, 168, 155) !important;    
+    background: rgb(252, 208, 202) !important;    
     border-bottom: 10px solid rgba(243, 83, 58, 0.9);
+}
+
+@media (max-width: 768px) {
+    .card {
+        margin: 2% 0 !important;
+    }
 }

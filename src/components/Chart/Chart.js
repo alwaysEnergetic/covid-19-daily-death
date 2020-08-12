@@ -1,5 +1,6 @@
 import React from 'react'
 import { Pie } from "react-chartjs-2";
+import styles from "./Chart.module.css"
 
 // destructure the data state being passed in
 function Chart({data: {positive, recovered, death} }) {
@@ -18,11 +19,15 @@ function Chart({data: {positive, recovered, death} }) {
                     }
                 ]
             }}
+            options={{
+                legend: {display: true},
+                title: {display: true, text:"Data Visualization of 56 US States and Territories"}
+            }}
         />
     )
 
     return (
-        <div>
+        <div className={styles.container}>
             {pieChart}
         </div>
     )
