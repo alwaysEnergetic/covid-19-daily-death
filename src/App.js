@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
 import styles from './App.module.css';
 import coronavirusLogo from './images/covid19-logo.jpg';
 import axios from 'axios';
