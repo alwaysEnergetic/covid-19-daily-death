@@ -2,8 +2,8 @@
 
 Live Site (deployed on Heroku): https://covid19-us-tracker-visual.herokuapp.com/
 
-## Screenshot (As of August 11th, 2020)
-![COVID19 App Screenshot](./src/images/exampleCOVID19.png)
+## Demo GIF (As of August 14th, 2020)
+![COVID19 App GIF](./src/images/covid19Demo.gif)
 
 ## Description
 A COVID-19 tracker that visualizes the statistics (total positive cases, recoveries, and deaths) of COVID-19 data in the United States provided by the [COVID Tracking Project API](https://covidtracking.com/data/api).
