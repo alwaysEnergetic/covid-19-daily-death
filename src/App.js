@@ -3,6 +3,7 @@ import styles from './App.module.css';
 import coronavirusLogo from './images/covid19-logo.jpg';
 import { DataCards, Chart } from "./components"
 import { fetchData } from "./api/index"
+import Footer from 'rc-footer'
 
 function App() {
   const [data, setData] = useState({});
@@ -30,6 +31,7 @@ function App() {
       <DataCards data={data}/>
       <Chart data={data} />
       <p>Data Last Updated: {new Date(data.dateChecked).toDateString()}</p>
+      <Footer bottom="Made with ❤️ by Kenneth Nguyen" backgroundColor="#ffffff"/>
     </div>
   );
 }
