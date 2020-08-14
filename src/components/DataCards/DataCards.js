@@ -8,7 +8,7 @@ import cx from "classnames";
 function DataCards({data: {positive, recovered, death} }) {
     // if the data is not yet fetched and loaded into state, return a loading message
     if (!positive) {
-        return "Loading state..."
+        return "Loading data cards..."
     }  
 
     return (
