@@ -6,7 +6,7 @@ Live Site (deployed on Heroku): https://covid19-us-tracker-visual.herokuapp.com/
 ![COVID19 App GIF](./src/images/covid19Demo.gif)
 
 ## Description
-A COVID-19 tracker that visualizes the statistics (total positive cases, recoveries, and deaths) of COVID-19 data in the United States provided by the [COVID Tracking Project API](https://covidtracking.com/data/api).
+A COVID-19 tracker that visualizes the statistics (total positive cases, recoveries, and deaths) of COVID-19 data in the United States provided by the [COVID Tracking Project API](https://covidtracking.com/data/api). The API's data is updated every day at 0:00 AM UTC (i.e. 5:00 PM PST).
 
 ## COVID Tracking Project API
 The documentation of the API used is linked [here](https://documenter.getpostman.com/view/8854915/SzS8rjHv?version=latest#dc323eaa-826d-4efc-bd3c-85d9d757477b). 
@@ -35,6 +35,7 @@ npm start
 By default, npm start will tell you to navigate to localhost:3000 (or another local server if port 3000 is occupied) on your browser to see the application
 
 ## Utilized
+* React.js 
 * @material-ui/core - React UI framework
     * View the official website [here](https://material-ui.com/)
 * react-countup - React wrapper for CountUp.js
@@ -53,6 +54,7 @@ The coronavirus logo was taken from [York Graphic Designers](https://www.yorkgra
 
 ## Backlog
 * Options to view data of each individual state/territory
+    * Render data cards, graphs, and titles of each option dynamically
 * ~~Line graph of daily COVID-19 statistics~~ 
     * The graph on small (devices) viewport is cluttered and needs the height to be adjusted
     * 
