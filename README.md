@@ -11,7 +11,8 @@ A COVID-19 tracker that visualizes the statistics (total positive cases, recover
 ## COVID Tracking Project API
 The documentation of the API used is linked [here](https://documenter.getpostman.com/view/8854915/SzS8rjHv?version=latest#dc323eaa-826d-4efc-bd3c-85d9d757477b). 
 
-I make a GET request to 'http://covidtracking.com/api/us' to obtain the US Current information that I display on my web app. 
+I make a GET request to 'http://covidtracking.com/api/us' to obtain the US Current data that I display on the data cards and the pie chart.
+I make a GET request to 'http://covidtracking.com/api/us/daily' to obtain the US daily information that I display on the line graph.  
 
 ## Running Project Locally
 There is the live site of this application deployed on Heroku as displayed on one of the first few lines of this README, but if you would rather run this application locally, then do the following:
@@ -52,7 +53,9 @@ The coronavirus logo was taken from [York Graphic Designers](https://www.yorkgra
 
 ## Backlog
 * Options to view data of each individual state/territory
-* Line graph of daily COVID-19 statistics
+* ~~Line graph of daily COVID-19 statistics~~ 
+    * The graph on small (devices) viewport is cluttered and needs the height to be adjusted
+    * 
 * % change counter for each data
 * UI adjustments
 

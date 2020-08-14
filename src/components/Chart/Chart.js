@@ -1,40 +1,23 @@
 import  React, { useState, useEffect } from 'react'
 import { Line, Pie } from "react-chartjs-2";
 import styles from "./Chart.module.css"
-import axios from 'axios';
+import { fetchDailyData } from "../../api/index"
 
-// destructure the data state being passed in
+// destructure the data state being passed in so we can call positive, recovered, and death directly
 function Chart({data: {positive, recovered, death} }) {
     const [dailyData, setDailyData] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    // * LOOK INTO REFACTORING API AXIOS CALLS INTO A SEPERATE FILE INSTEAD OF IN COMPONENTS * 
-    const API_DAILY = 'https://covidtracking.com/api/us/daily'
+    const [loading, setLoading] = useState(true); // used to render a loading graph message for the line chart if the dailyData is not updated yet
 
     useEffect(() => {
-        const fetchDailyData = async () => {
-            try {
-                await axios.get(API_DAILY).then(response => {
-                    const responseObject = response.data;
-                    const mappedDailyObject = responseObject.map(data => ({
-                        date: data.dateChecked.substring(0, 10),
-                        positive: data.positive,
-                        recovered: data.recovered,
-                        death: data.death,
-                    }))
-                    const reverseDailyObject = mappedDailyObject.reverse();
-                    setDailyData(reverseDailyObject)
-                    setLoading(false)
-                })
-            }
-            catch (err) {
-                console.log(err);
-            }
-        }
         // setTimeout(function() { fetchDailyData() }, 5000);  <- used to make sure loading data message / switch to graph data works correctly
-        fetchDailyData();
+        const retrieval = async () => {
+            setDailyData(await fetchDailyData())
+            setLoading(false)
+        }
+        retrieval()
     }, [])
 
+    // debugging useEffect right now to check that dailyData has been updated
     useEffect(() => {
         console.log("Change in daily data: ", dailyData);
     }, [dailyData])
@@ -64,14 +47,14 @@ function Chart({data: {positive, recovered, death} }) {
                 datasets: [
                     {
                         data: dailyData.map(({ positive }) => positive),
-                        label: "Positive Cases",
+                        label: "Infected",
                         backgroundColor: "rgb(206, 255, 195)",
                         borderColor: "#006400",
                         fill: '+1',
                     },
                     {
                         data: dailyData.map(({ recovered }) => recovered),
-                        label: "Recovered Cases",
+                        label: "Recovered",
                         backgroundColor: "rgb(190, 245, 242)",
                         borderColor: "#008ecc",
                         fill: '+1',
@@ -95,7 +78,7 @@ function Chart({data: {positive, recovered, death} }) {
         <div className={styles.container}>
             {loading && <p>Graph is loading...</p>}
             {positive && pieChart}
-            {dailyData.length !== 0 && lineChart}
+            {dailyData.length && lineChart}
         </div>
 
     )

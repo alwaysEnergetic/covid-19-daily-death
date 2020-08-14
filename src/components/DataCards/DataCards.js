@@ -4,7 +4,7 @@ import CountUp from 'react-countup';
 import styles from "./DataCards.module.css";
 import cx from "classnames";
 
-// destructure the data state being passed in
+// destructure the data state being passed in so we can call positive, recovered, and death directly
 function DataCards({data: {positive, recovered, death} }) {
     // if the data is not yet fetched and loaded into state, return a loading message
     if (!positive) {
