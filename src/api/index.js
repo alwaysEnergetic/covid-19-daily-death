@@ -2,6 +2,8 @@ import axios from "axios"
 
 const API_US = 'https://covidtracking.com/api/us'; // current total US data
 const API_DAILY = 'https://covidtracking.com/api/us/daily' // all the daily US data compiled from the start of the API to current
+const API_STATES = "https://covidtracking.com/api/states" // current total data for each US state + territory
+const API_STATES_DAILY = "https://covidtracking.com/api/states/daily" // all the daily data for each US state + territory
 
 // retrieves the positive cases, recovered cases, total deaths, and last time of update from the API
 // the API returns a response array of length 1, where the only element is an object containing all the data
@@ -47,5 +49,55 @@ const fetchDailyData = async () => {
     }
 }
 
+// retrieves an ARRAY of objects of all the US states and territories
+// extract the state abbreviation, positive cases, recovered cases, total deaths into a new array 
+const fetchStates = async () => {
+    try {
+        const statesData = await axios.get(API_STATES).then(response => {
+        // console.log(response.data[0]);
+            const mappedStates = response.data.map(data => ({
+                    state: data.state,
+                    positive: data.positive,
+                    recovered: data.recovered,
+                    death: data.death,
+            }))
+            // console.log(mappedStates);
+            return mappedStates;
+        })
+
+        return statesData;
+    }
+    catch (err) {
+        console.log(err)
+    }
+}
+
+// retrieves an ARRAY of objects of every single US state and territory daily data from when the API started tracking data
+// filter the JSON response to only get an array that consists of the daily data for the specific state passed in as parameter
+// extract the state abbreviation, positive cases, recovered cases, total deaths, and date last updated into a new array 
+// create a new array of destructured data using .map()
+// mapped array is reverse() because the json array object's values were in reverse chronological order
+const fetchStatesDaily = async (state) => {
+    try {
+        const dailyStatesData = await axios.get(API_STATES_DAILY).then(response => {
+        const filteredState = response.data.filter(data => data.state === state)
+        const mappedState = filteredState.map(data => ({
+                state: data.state,
+                positive: data.positive,
+                recovered: data.recovered,
+                death: data.death,
+                dateChecked: data.dateChecked,
+            }))
+            const reverseDailyState = mappedState.reverse();
+            return reverseDailyState;
+            // console.log(mappedState);
+        })
+
+        return dailyStatesData
+    }
+    catch (err) {
+        console.log(err)
+    }
+}
 
 export { fetchData, fetchDailyData }
