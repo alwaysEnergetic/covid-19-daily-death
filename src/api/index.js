@@ -1,4 +1,5 @@
 import axios from "axios"
+import convertState from "./convertState"
 
 const API_US = 'https://covidtracking.com/api/us'; // current total US data
 const API_DAILY = 'https://covidtracking.com/api/us/daily' // all the daily US data compiled from the start of the API to current
@@ -50,13 +51,15 @@ const fetchDailyData = async () => {
 }
 
 // retrieves an ARRAY of objects of all the US states and territories
-// extract the state abbreviation, positive cases, recovered cases, total deaths into a new array 
+// extract the state abbreviation, state full name, positive cases, recovered cases, total deaths into a new array 
+// API json only returns the state abbrevation so a function is created to do the abbrevation to full name conversion
 const fetchStates = async () => {
     try {
         const statesData = await axios.get(API_STATES).then(response => {
         // console.log(response.data[0]);
             const mappedStates = response.data.map(data => ({
                     state: data.state,
+                    stateName: convertState(data.state),
                     positive: data.positive,
                     recovered: data.recovered,
                     death: data.death,
