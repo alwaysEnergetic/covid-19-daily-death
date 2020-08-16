@@ -1,0 +1,10 @@
+.formControl {
+    width: 30vw;
+    margin-bottom: 10px !important;
+}
+
+@media (max-width: 768px) {
+    .formControl {
+        width: 45vw;
+    }
+  }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './App.module.css';
 import coronavirusLogo from './images/covid19-logo.jpg';
-import { DataCards, Chart } from "./components"
+import { DataCards, Chart, StateSelector } from "./components"
 import { fetchData } from "./api/index"
 import Footer from 'rc-footer'
 
@@ -27,7 +27,8 @@ function App() {
   return (
     <div className={styles.app}>
       <img src={coronavirusLogo} alt="COVID-19 LOGO" className={styles.image}/>
-      <h1>United States</h1>
+      <h1>Currently Displaying: United States</h1>
+      <StateSelector />
       <DataCards data={data}/>
       <Chart data={data} />
       <p>Data Last Updated: {new Date(data.dateChecked).toDateString()}</p>

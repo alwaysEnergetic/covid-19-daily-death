@@ -59,7 +59,7 @@ const fetchStates = async () => {
         // console.log(response.data[0]);
             const mappedStates = response.data.map(data => ({
                     state: data.state,
-                    stateName: convertState(data.state),
+                    fullName: convertState(data.state),
                     positive: data.positive,
                     recovered: data.recovered,
                     death: data.death,
@@ -103,4 +103,4 @@ const fetchStatesDaily = async (state) => {
     }
 }
 
-export { fetchData, fetchDailyData }
+export { fetchData, fetchDailyData, fetchStates, fetchStatesDaily }
