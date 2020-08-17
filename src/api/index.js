@@ -2,7 +2,7 @@ import axios from "axios"
 import convertState from "./convertState"
 
 const API_US = 'https://covidtracking.com/api/us'; // current total US data
-const API_DAILY = 'https://covidtracking.com/api/us/daily' // all the daily US data compiled from the start of the API to current
+const API_US_DAILY = 'https://covidtracking.com/api/us/daily' // all the daily US data compiled from the start of the API to current
 const API_STATES = "https://covidtracking.com/api/states" // current total data for each US state + territory
 const API_STATES_DAILY = "https://covidtracking.com/api/states/daily" // all the daily data for each US state + territory
 
@@ -15,7 +15,7 @@ const fetchData = async () => {
         const data = await axios.get(API_US).then(response => {
             const responseObject = response.data[0];
             const { dateChecked, positive, recovered, death } = responseObject;
-            return { dateChecked, positive, recovered, death };
+            return { fullName: "United States", dateChecked, positive, recovered, death };
         })
         
         return data;
@@ -31,13 +31,13 @@ const fetchData = async () => {
 // mapped array is reverse() because the json array object's values were in reverse chronological order
 const fetchDailyData = async () => {
     try {
-        const dailyData = await axios.get(API_DAILY).then(response => {
+        const dailyData = await axios.get(API_US_DAILY).then(response => {
             const responseObject = response.data;
             const mappedDailyObject = responseObject.map(data => ({
-                date: data.dateChecked.substring(0, 10),
-                positive: data.positive,
-                recovered: data.recovered,
-                death: data.death,
+                dateChecked: data.dateChecked.substring(0, 10),
+                dailyPositive: data.positive,
+                dailyRecovered: data.recovered,
+                dailyDeath: data.death,
             }))
             const reverseDailyObject = mappedDailyObject.reverse();
             return reverseDailyObject;
@@ -53,19 +53,24 @@ const fetchDailyData = async () => {
 // retrieves an ARRAY of objects of all the US states and territories
 // extract the state abbreviation, state full name, positive cases, recovered cases, total deaths into a new array 
 // API json only returns the state abbrevation so a function is created to do the abbrevation to full name conversion
-const fetchStates = async () => {
+const fetchStates = async (state) => {
     try {
         const statesData = await axios.get(API_STATES).then(response => {
-        // console.log(response.data[0]);
             const mappedStates = response.data.map(data => ({
-                    state: data.state,
-                    fullName: convertState(data.state),
-                    positive: data.positive,
-                    recovered: data.recovered,
-                    death: data.death,
+                stateAbbrev: data.state,    
+                fullName: convertState(data.state),
+                dateChecked: data.dateChecked.substring(0, 10),
+                positive: data.positive,
+                recovered: data.recovered,
+                death: data.death,
             }))
-            // console.log(mappedStates);
-            return mappedStates;
+            if (state === undefined) {
+                return mappedStates
+            } else {
+                const filteredState = mappedStates.filter(data => data.fullName === state)
+                const { stateAbbrev, fullName, dateChecked, positive, recovered, death } = filteredState[0]
+                return { stateAbbrev, fullName, dateChecked, positive, recovered, death };
+            }
         })
 
         return statesData;
@@ -83,17 +88,16 @@ const fetchStates = async () => {
 const fetchStatesDaily = async (state) => {
     try {
         const dailyStatesData = await axios.get(API_STATES_DAILY).then(response => {
-        const filteredState = response.data.filter(data => data.state === state)
-        const mappedState = filteredState.map(data => ({
-                state: data.state,
-                positive: data.positive,
-                recovered: data.recovered,
-                death: data.death,
-                dateChecked: data.dateChecked,
+            const filteredState = response.data.filter(data => convertState(data.state) === state)
+            const mappedState = filteredState.map(data => ({
+                dateChecked: data.dateChecked === null ? null : data.dateChecked.substring(0, 10),
+                stateAbbrev: data.state,
+                dailyPositive: data.positive,
+                dailyRecovered: data.recovered,
+                dailyDeath: data.death,
             }))
             const reverseDailyState = mappedState.reverse();
             return reverseDailyState;
-            // console.log(mappedState);
         })
 
         return dailyStatesData

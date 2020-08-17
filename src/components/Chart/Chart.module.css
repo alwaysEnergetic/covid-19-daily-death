@@ -1,6 +1,6 @@
 .container {
     display: flex;
-    flex-direction: column; /* column currently while there is no option to change graphs; back to row after that */
+    flex-direction: column;
     justify-content: center;
     width: 85%;
 }

@@ -7,7 +7,7 @@ import cx from "classnames";
 // destructure the data state being passed in so we can call positive, recovered, and death directly
 function DataCards({data: {positive, recovered, death} }) {
     // if the data is not yet fetched and loaded into state, return a loading message
-    if (!positive) {
+    if (positive === undefined) {
         return "Loading data cards..."
     }  
 
@@ -24,7 +24,9 @@ function DataCards({data: {positive, recovered, death} }) {
                 <Grid item component={Card} xs={12} sm className={cx(styles.card, styles.recovered)}>
                     <CardContent>
                         <Typography variant="h4">Recovered</Typography>
+                        {recovered === null ? <Typography variant="h5">?</Typography> : 
                         <Typography variant="h5"><CountUp start={0} end={recovered} duration={2} separator="," /></Typography>
+                        }
                         <Typography variant="subtitle1">Total recoveries from COVID-19</Typography>
                     </CardContent>
                 </Grid>

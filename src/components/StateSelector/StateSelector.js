@@ -3,9 +3,8 @@ import { FormControl, NativeSelect, InputLabel } from "@material-ui/core"
 import styles from "./StateSelector.module.css"
 import { fetchStates } from "../../api/index"
 
-function StateSelector() {
+function StateSelector({ handleChangeState }) {
     const [states, setStates] = useState([])
-    const [currentState, setCurrentState] = useState('United States')
 
     useEffect(() => {
         const retrieval = async () => {
@@ -19,18 +18,13 @@ function StateSelector() {
         console.log("Change in states data:", states);
     }, [states])
 
-    // debugging useEffect right now to check the new selected state option
-    useEffect(() => {
-        console.log("Current state option:", currentState);
-    }, [currentState])
-
     return (
         <div>
             <FormControl className={styles.formControl}>
                 <InputLabel shrink>
                     State Selector
                 </InputLabel>
-                <NativeSelect defaultValue="United States" onChange={(e) => setCurrentState(e.target.value)} name="state">
+                <NativeSelect defaultValue="United States" onChange={(e) => handleChangeState(e.target.value)} name="state">
                     <option value="United States">United States</option>
                     {states.map((state, index) => (
                         <option key={index} value={state.fullName}>

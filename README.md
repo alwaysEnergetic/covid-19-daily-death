@@ -57,9 +57,9 @@ The coronavirus logo was taken from [York Graphic Designers](https://www.yorkgra
     * Render data cards, graphs, and titles of each option dynamically
 * ~~Line graph of daily COVID-19 statistics~~ 
     * The graph on small (devices) viewport is cluttered and needs the height to be adjusted
-    * 
 * % change counter for each data
 * UI adjustments
+* Possibly buttons to switch between pie chart and line chart
 
 ## Author
 Kenneth Nguyen

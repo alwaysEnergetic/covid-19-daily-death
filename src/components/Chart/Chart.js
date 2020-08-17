@@ -1,26 +1,13 @@
-import  React, { useState, useEffect } from 'react'
+import  React from 'react'
 import { Line, Pie } from "react-chartjs-2";
 import styles from "./Chart.module.css"
-import { fetchDailyData } from "../../api/index"
 
 // destructure the data state being passed in so we can call positive, recovered, and death directly
-function Chart({data: {positive, recovered, death} }) {
-    const [dailyData, setDailyData] = useState([]);
-    const [loading, setLoading] = useState(true); // used to render a loading graph message for the line chart if the dailyData is not updated yet
+function Chart({data: {fullName, positive, recovered, death}, dailyData}) {
 
-    useEffect(() => {
-        // setTimeout(function() { fetchDailyData() }, 5000);  <- used to make sure loading data message / switch to graph data works correctly
-        const retrieval = async () => {
-            setDailyData(await fetchDailyData())
-            setLoading(false)
-        }
-        retrieval()
-    }, [])
-
-    // debugging useEffect right now to check that dailyData has been updated
-    useEffect(() => {
-        console.log("Change in daily data: ", dailyData);
-    }, [dailyData])
+    if (dailyData === undefined) {
+        return "Graphs are loading..."
+    }
 
     const pieChart = (
         <Pie
@@ -35,7 +22,7 @@ function Chart({data: {positive, recovered, death} }) {
             }}
             options={{
                 legend: {display: true},
-                title: {display: true, text:"Data Visualization of 56 US States and Territories"}
+                title: {display: true, text:`Collective Data Visualization of ${fullName}`}
             }}
         />
     )
@@ -43,24 +30,24 @@ function Chart({data: {positive, recovered, death} }) {
     const lineChart = (
         <Line 
             data={{
-                labels: dailyData.map(({ date }) => date),
+                labels: dailyData.map(({ dateChecked }) => dateChecked),
                 datasets: [
                     {
-                        data: dailyData.map(({ positive }) => positive),
+                        data: dailyData.map(({ dailyPositive }) => dailyPositive),
                         label: "Infected",
                         backgroundColor: "rgb(206, 255, 195)",
                         borderColor: "#006400",
                         fill: '+1',
                     },
                     {
-                        data: dailyData.map(({ recovered }) => recovered),
+                        data: dailyData.map(({ dailyRecovered }) => dailyRecovered),
                         label: "Recovered",
                         backgroundColor: "rgb(190, 245, 242)",
                         borderColor: "#008ecc",
                         fill: '+1',
                     },
                     {
-                        data: dailyData.map(({ death }) => death),
+                        data: dailyData.map(({ dailyDeath }) => dailyDeath),
                         label: "Deaths",
                         backgroundColor: "rgb(252, 208, 202)",
                         borderColor: "red",
@@ -69,14 +56,14 @@ function Chart({data: {positive, recovered, death} }) {
                 ]
             }}
             options={{
-                title: {display: true, text:"Data Visualization of 56 US States/Territories from January 22nd, 2020 to Present"}
+                title: {display: true, text:`Data Visualization of ${fullName} from first case(s) reported to present day`}
             }}
         />
     )
 
     return (
         <div className={styles.container}>
-            {loading && <p>Graph is loading...</p>}
+            {!dailyData.length && <p>Graph is loading...</p>}
             {positive && pieChart}
             {dailyData.length && lineChart}
         </div>
