@@ -35,7 +35,7 @@ npm start
 By default, npm start will tell you to navigate to localhost:3000 (or another local server if port 3000 is occupied) on your browser to see the application
 
 ## Utilized
-* React.js 
+* React 
 * @material-ui/core - React UI framework
     * View the official website [here](https://material-ui.com/)
 * react-countup - React wrapper for CountUp.js
@@ -53,12 +53,11 @@ The color palette I chose for this project is called Popsicle from [this](https:
 The coronavirus logo was taken from [York Graphic Designers](https://www.yorkgraphicdesigners.co.uk/coronavirus-covid-19-logo-design/). Check them out!
 
 ## Backlog
-* Options to view data of each individual state/territory
-    * Render data cards, graphs, and titles of each option dynamically
+* ~~Options to choose each individual state/territory to display data for~~
+    * ~~Render data cards, graphs, and titles of each option dynamically~~
 * ~~Line graph of daily COVID-19 statistics~~ 
     * The graph on small (devices) viewport is cluttered and needs the height to be adjusted
 * % change counter for each data
-* UI adjustments
 * Possibly buttons to switch between pie chart and line chart
 
 ## Author
