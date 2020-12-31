@@ -28,11 +28,13 @@ function StateSelector({ handleChangeState }) {
           name="state"
         >
           <option value="United States">United States</option>
-          {states.map((state, index) => (
-            <option key={index} value={state.fullName}>
-              {state.fullName}
-            </option>
-          ))}
+          {states
+            ? states.map((state, index) => (
+                <option key={index} value={state.fullName}>
+                  {state.fullName}
+                </option>
+              ))
+            : "Loading..."}
         </NativeSelect>
       </FormControl>
     </div>

@@ -61,7 +61,7 @@ const fetchStates = async (state) => {
       const mappedStates = response.data.map((data) => ({
         stateAbbrev: data.state,
         fullName: convertState(data.state),
-        dateChecked: data.dateChecked.substring(0, 10),
+        dateChecked: data.dateChecked,
         positive: data.positive,
         recovered: data.recovered,
         death: data.death,
@@ -110,10 +110,7 @@ const fetchStatesDaily = async (state) => {
           (data) => convertState(data.state) === state
         );
         const mappedState = filteredState.map((data) => ({
-          dateChecked:
-            data.dateChecked === null
-              ? null
-              : data.dateChecked.substring(0, 10),
+          dateChecked: data.dateChecked === null ? null : data.dateChecked,
           stateAbbrev: data.state,
           dailyPositive: data.positive,
           dailyRecovered: data.recovered,
