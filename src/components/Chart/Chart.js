@@ -1,13 +1,12 @@
 import React from "react";
-import useBreakpoint from 'use-breakpoint';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Line, Pie } from "react-chartjs-2";
 import styles from "./Chart.module.css";
 
 // destructure the data state being passed in so we can call positive, recovered, and death directly
 // dailyData not destructured so we can map out daily values
 function Chart({ data: { fullName, positive, recovered, death }, dailyData }) {
-  const BREAKPOINTS = { mobile: 0, tablet: 768, desktop: 1280 }
-  const { breakpoint } = useBreakpoint(BREAKPOINTS, 'desktop');
+  const mobile = useMediaQuery('(max-width:600px)');
 
   const pieChart = (
     <Pie
@@ -67,7 +66,7 @@ function Chart({ data: { fullName, positive, recovered, death }, dailyData }) {
           display: true,
           text: `Data Visualization of ${fullName} from first case(s) reported to present day`,
         },
-        maintainAspectRatio: breakpoint === 'mobile' ? false : true,
+        maintainAspectRatio: mobile ? false : true,
       }}
     />
   );

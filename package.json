@@ -15,8 +15,7 @@
     "react-chartjs-2": "^2.10.0",
     "react-countup": "^4.3.3",
     "react-dom": "^16.13.1",
-    "react-scripts": "^2.0.5",
-    "use-breakpoint": "^1.1.6"
+    "react-scripts": "^2.0.5"
   },
   "scripts": {
     "start": "react-scripts start",
