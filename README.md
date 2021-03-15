@@ -11,6 +11,9 @@ A COVID-19 tracker that visualizes the statistics (total positive cases, recover
 Some states may have null values for some of their data, particularly a state's recovery number from COVID-19. In this case, I chose to update the data card for such null values with a '?' to indicate that it is unknown.
 
 ## COVID Tracking Project API
+UPDATE 2: This project only has data up to March 7th, 2021. See The COVID Tracking Project's statement below.
+![COVID Tracking Project API Deprecation Notice](/src/images/deprecatedCOVID.png)
+
 UPDATE: The COVID Tracking Project has a new API domain name and added new endpoints to extract current and historic values for a specific state. I replaced the old API endpoints with the new endpoints and the new ones still returned the same data so I did not have to make any logical changes in my code. There were the new endpoints to retrieve a specific state's values which would make my application faster because I currently have to make a call to get every state (and every single state's historic data for the daily chart) from the API and filter that response data value to extract just the state that I want to display, but I decided to let it be for now while I focus on other projects.
 
 The documentation of the API used is linked [here](https://documenter.getpostman.com/view/8854915/SzS8rjHv?version=latest#dc323eaa-826d-4efc-bd3c-85d9d757477b). 
