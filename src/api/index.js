@@ -1,10 +1,12 @@
 import axios from "axios";
 import convertState from "./convertState";
 
-const API_US = "https://api.covidtracking.com/v1/us/current.json"; // current total US data
-const API_US_DAILY = "https://api.covidtracking.com/v1/us/daily.json"; // all the daily US data compiled from the start of the API to current
-const API_STATES = "https://api.covidtracking.com/v1/states/current.json"; // current total data for each US state + territory
-const API_STATES_DAILY = "https://api.covidtracking.com/v1/states/daily.json"; // all the daily data for each US state + territory
+const HEROKU_PROXY_SERVER = "https://intense-sierra-42107.herokuapp.com";
+
+const API_US = `${HEROKU_PROXY_SERVER}/https://api.covidtracking.com/v1/us/current.json`; // current total US data
+const API_US_DAILY = `${HEROKU_PROXY_SERVER}/https://api.covidtracking.com/v1/us/daily.json`; // all the daily US data compiled from the start of the API to current
+const API_STATES = `${HEROKU_PROXY_SERVER}/https://api.covidtracking.com/v1/states/current.json`; // current total data for each US state + territory
+const API_STATES_DAILY = `${HEROKU_PROXY_SERVER}/https://api.covidtracking.com/v1/states/daily.json`; // all the daily data for each US state + territory
 
 // retrieves the positive cases, recovered cases, total deaths, and last time of update from the API
 // the API returns a response array of length 1, where the only element is an object containing all the data
