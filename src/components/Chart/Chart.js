@@ -1,12 +1,13 @@
 import React from "react";
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import { Line, Pie } from "react-chartjs-2";
 import styles from "./Chart.module.css";
 
 // destructure the data state being passed in so we can call positive, recovered, and death directly
 // dailyData not destructured so we can map out daily values
 function Chart({ data: { fullName, positive, recovered, death }, dailyData }) {
-  const mobile = useMediaQuery('(max-width:600px)');
+  const mobile = useMediaQuery("(max-width:600px)");
 
   const pieChart = (
     <Pie
@@ -74,9 +75,22 @@ function Chart({ data: { fullName, positive, recovered, death }, dailyData }) {
   // if the dailyData is undefined then we return that the lineChart is loading, same thing with positive and pieChart
   return (
     <div className={styles.container}>
-      {dailyData === undefined && <p>Graph is loading...</p>}
-      {positive && pieChart}
-      {dailyData.length && lineChart}
+      {!positive ? (
+        <>
+          <CircularProgress />
+          <p>Loading pie chart...</p>
+        </>
+      ) : (
+        pieChart
+      )}
+      {!dailyData ? (
+        <>
+          <CircularProgress />
+          <p>Loading line chart...</p>
+        </>
+      ) : (
+        lineChart
+      )}
     </div>
   );
 }

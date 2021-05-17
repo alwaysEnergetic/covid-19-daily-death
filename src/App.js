@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import styles from "./App.module.css";
 import coronavirusLogo from "./images/covid19-logo.jpg";
 import { DataCards, Chart, StateSelector } from "./components";
-import { fetchUS, fetchDailyUS, fetchStates, fetchStatesDaily } from "./api/index";
+import {
+  fetchUS,
+  fetchDailyUS,
+  fetchStates,
+  fetchStatesDaily,
+} from "./api/index";
 import Footer from "rc-footer";
 
 function App() {
@@ -54,7 +59,9 @@ function App() {
       <StateSelector handleChangeState={handleChangeState} />
       <DataCards data={data} />
       <Chart data={data} dailyData={dailyData} />
-      <p>Data Last Updated: {new Date(data.dateChecked).toDateString()}</p>
+      {data.dateChecked && (
+        <p>Data Last Updated: {new Date(data.dateChecked).toDateString()}</p>
+      )}
       <Footer
         bottom="Made with ❤️ by Kenneth Nguyen"
         backgroundColor="#ffffff"
